@@ -12,8 +12,6 @@
       <meta name="author" content="http://www.ferris.edu" /> 
       <meta name="copyright" content="http://www.ferris.edu" /> 
       
-<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
-<script type="text/javascript">FB.init("a17426ad97dd5d41a428216d222e6a08", "http://www.ferris.edu/admissions/video/xd_receiver.htm");</script>
 
 <link type="text/css" rel="stylesheet" media="screen" href="http://www.ferris.edu/admissions/css/current/style.css" />
 
@@ -83,21 +81,6 @@
 </div>
 
 </body>
-<div id="fb-root"></div>
-<script>
-    window.fbAsyncInit = function() {
-        FB.init({appId: "a17426ad97dd5d41a428216d222e6a08",
-                           status: true,
-                           cookie: true,
-                           xfbml: true});
-        FB.Canvas.setSize();
-    };
-    (function() {
-        var e = document.createElement('script'); e.async = true;
-        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-        document.getElementById('fb-root').appendChild(e);
-    }());
-</script>
 </html>
 
 <script type="text/javascript" src="mustache.js">//</script>
@@ -191,7 +174,7 @@ Navigation = function ( params, templateFactory ){
 	};
 };
 
-AppRouter = Backbone.Router.extend({
+/*AppRouter = Backbone.Router.extend({
     routes: {
         "!/:page": "form",
         "!/:page/:section": "form",
@@ -203,7 +186,7 @@ AppRouter = Backbone.Router.extend({
     "default": function(){
     	router.navigate( "#!/"+navigation.order[0].name, true );
     }
-});
+});*/
 
 initialize = function(){
 	navigation = new Navigation(videos, templateFactory);
