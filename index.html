@@ -150,8 +150,8 @@ Navigation = function ( params, templateFactory ){
 	}
 	
 	this.addPage = function ( params , templateFactory ){
-		this.pages[ params.name ] = new Video(params, templateFactory);
-		this.order.push( this.pages[ params.name ] );
+		this.pages[ params.id ] = new Video(params, templateFactory);
+		this.order.push( this.pages[ params.id ] );
 	}
 	
 	this.setPage = function ( page ){
@@ -176,15 +176,15 @@ Navigation = function ( params, templateFactory ){
 
 AppRouter = Backbone.Router.extend({
     routes: {
-        "!/video/:page": "form",
-        "!/video/:page/:time": "form",
+        "!/:page": "form",
+        "!/:page/:time": "form",
 		"*actions": "default"
     },
     form: function( page ){
         navigation.setPage( page );
     },
     "default": function(){
-    	router.navigate( "#!/"+navigation.order[0].name, true );
+    	router.navigate( "#!/"+navigation.order[0].id, true );
     }
 });
 
