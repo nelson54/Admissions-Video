@@ -99,9 +99,29 @@ videos = { pages:
 			description : "T-bone shankle bacon fatback jowl. Hamburger ham sirloin, boudin andouille flank ball tip ground round pastrami. Bacon spare ribs ball tip shoulder sirloin, tail...",
 			thumbnailSmallUrl : "http://www.ferris.edu/admissions/video/byron.png",
 			thumbnailLargeUrl : "http://www.ferris.edu/admissions/video/byron.png",
-			videoMp4Url : "http://www.ferris.edu/admissions/video/byron.mp4",
-			videoOgvUrl : "http://www.ferris.edu/admissions/video/byron.ogv",
-			videoWebMUrl : "http://www.ferris.edu/admissions/video/byron.webm"
+			videoMp4Url : "http://wwwdev.ferris.edu/admissions/video/byron.mp4",
+			videoOgvUrl : "http://wwwdev.ferris.edu/admissions/video/byron.ogv",
+			videoWebMUrl : "http://wwwdev.ferris.edu/admissions/video/byron.webm"
+		},
+    	{
+	    	id : "danielle",
+			title : "Danielle",
+			description : "ASDF ASDF ASDF",
+			thumbnailSmallUrl : "http://www.ferris.edu/admissions/video/danielle.png",
+			thumbnailLargeUrl : "http://www.ferris.edu/admissions/video/danielle.png",
+			videoMp4Url : "http://wwwdev.ferris.edu/admissions/video/danielle.mp4",
+			videoOgvUrl : "http://wwwdev.ferris.edu/admissions/video/danielle.ogv",
+			videoWebMUrl : "http://wwwdev.ferris.edu/admissions/video/danielle.webm"
+		},
+    	{
+	    	id : "viewbook",
+			title : "Viewbook",
+			description : "FDSA FDSA FDSA...",
+			thumbnailSmallUrl : "http://wwwdev.ferris.edu/admissions/video/viewbook.png",
+			thumbnailLargeUrl : "http://wwwdev.ferris.edu/admissions/video/viewbook.png",
+			videoMp4Url : "http://wwwdev.ferris.edu/admissions/video/viewbook.mp4",
+			videoOgvUrl : "http://wwwdev.ferris.edu/admissions/video/viewbook.ogv",
+			videoWebMUrl : "http://wwwdev.ferris.edu/admissions/video/viewbook.webm"
 		}
 	]
 }
@@ -148,7 +168,7 @@ Navigation = function ( params, templateFactory ){
 		this.getTemplate();
 		$("#no-menu-content").empty();
 		$("#no-menu-content").append(this.currentPage.render());
-		$("#no-menu-content").prepend( this.template.render(this) );
+		$("#no-menu-content").append( this.template.render(this) );
 	}
 	
 	this.addPage = function ( params , templateFactory ){
