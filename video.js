@@ -12,6 +12,7 @@ Video = Backbone.Model.extend({
     },
     initialize : function (){
     	this.set({"selector":"video[id=\""+this.get("id")+"\"]"});
+    	this.set({ "url" : "http://www.ferris.edu/admissions/video/#!/" + this.get("id") });
     	this.set({ "fieldHtml": this.render() });
     },
 	render : function(){

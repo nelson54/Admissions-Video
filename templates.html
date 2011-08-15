@@ -11,7 +11,7 @@
 					<p>{{description}}</p>
 				</div>
 				<div id="comments">
-					
+					<fb:comments width="720px" css="http://www.ferris.edu/admissions/video/fbcomments.css" href="{{url}}"></fb:comments>
 				</div>
 			</div>
 			
@@ -20,7 +20,7 @@
 	<script id="page-template" type="text/x-handlebars-template" title="navigation">
 		<div id="thumbnails">
 			{{#each order}}
-			<a class="thumbnail" href="#!/{{this.attributes.id}}"><img src="{{this.attributes.thumbnailSmallUrl}}" /></a>
+			<a class="thumbnail" href="{{this.attributes.url}}"><img src="{{this.attributes.thumbnailSmallUrl}}" /></a>
 			{{/each}}
 		</div>
 	</script>
