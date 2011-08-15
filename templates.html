@@ -1,0 +1,28 @@
+<html>
+	<script id="html5-video-template" type="text/x-handlebars-template" title="videoTemplate">
+		<video width="720" height="340" style="background-color:black;" controls>
+		  {{#if videoMp4Url}}<source src="{{videoMp4Url}}"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>{{/if}}
+		  {{#if videoWebMUrl}}<source src="{{videoWebMUrl}}" type='video/webm; codecs="vp8, vorbis"'>
+		  {{#if videoOgvUrl}}<source src="{{videoOgvUrl}}"  type='video/ogg; codecs="theora, vorbis"'>
+		</video>
+	</script>
+	<script id="page-template" type="text/x-handlebars-template" title="pageTemplate">
+		<div id="video">
+			{{video}}
+			<div id="description">
+				<h1>{{title}}</h1>
+				{{description}}
+			</div>
+			<div id="comments">
+				<fb:comments width="720px" css="http://www.ferris.edu/admissions/video/fbcomments.css"></fb:comments>
+			</div>
+		</div>
+	</script>
+	<script id="page-template" type="text/x-handlebars-template" title="pageTemplate">
+		<div id="thumbnails">
+			{{#each order}}
+			<a class="thumbnail" href=""><img src="thumbnailSmallUrl" /></a>
+			{{/each}}
+		</div>
+	</script>
+</html>
