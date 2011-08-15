@@ -228,7 +228,8 @@ AppRouter = Backbone.Router.extend({
         navigation.setPage( page, document.location );
     },
     "default": function(){
-    	router.navigate( "#!/"+navigation.order[0].id, true );
+    	var id = navigation.order[0].id;
+    	router.navigate( "#!/"+ id , true );
     }
 });
 
