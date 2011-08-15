@@ -106,6 +106,19 @@
 
 <script type="text/javascript">
 
+videos = { pages: 
+	[
+    	{
+	    	id : "byron",
+			title : "Byron",
+			description : "T-bone shankle bacon fatback jowl. Hamburger ham sirloin, boudin andouille flank ball tip ground round pastrami. Bacon spare ribs ball tip shoulder sirloin, tail...",
+			videoMp4Url : "http://www.ferris.edu/admissions/video/byron.mp4",
+			videoOgvUrl : "http://www.ferris.edu/admissions/video/byron.ogv",
+			videoWebMUrl : "http://www.ferris.edu/admissions/video/byron.webm"
+		}
+	]
+}
+
 Template = function ( source ) {
 	this.source = source;
 	this.template = Handlebars.compile(source);
@@ -191,7 +204,7 @@ AppRouter = Backbone.Router.extend({
 });
 
 initialize = function(){
-	navigation = new Navigation(formValues, templateFactory);
+	navigation = new Navigation(videos, templateFactory);
 	router = new AppRouter;
 	Backbone.history.start();
 }
