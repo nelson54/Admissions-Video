@@ -1,14 +1,12 @@
 <html>
 	<script id="html5-video-template" type="text/x-handlebars-template" title="videoTemplate">
-		<video width="720" height="340" style="background-color:black;" controls>
-		  {{#if videoMp4Url}}<source src="{{videoMp4Url}}"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>{{/if}}
-		  {{#if videoWebMUrl}}<source src="{{videoWebMUrl}}" type='video/webm; codecs="vp8, vorbis"'>{{/if}}
-		  {{#if videoOgvUrl}}<source src="{{videoOgvUrl}}"  type='video/ogg; codecs="theora, vorbis"'>{{/if}}
-		</video>
-	</script>
-	<script id="page-template" type="text/x-handlebars-template" title="pageTemplate">
-		<div id="video">
-			{{video}}
+			<div id="video">
+				<video width="720" height="340" style="background-color:black;" controls>
+				  {{#if videoMp4Url}}<source src="{{videoMp4Url}}"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>{{/if}}
+				  {{#if videoWebMUrl}}<source src="{{videoWebMUrl}}" type='video/webm; codecs="vp8, vorbis"'>{{/if}}
+				  {{#if videoOgvUrl}}<source src="{{videoOgvUrl}}"  type='video/ogg; codecs="theora, vorbis"'>{{/if}}
+				</video>
+			</div>
 			<div id="description">
 				<h1>{{title}}</h1>
 				{{description}}
@@ -21,7 +19,7 @@
 	<script id="page-template" type="text/x-handlebars-template" title="navigation">
 		<div id="thumbnails">
 			{{#each order}}
-			<a class="thumbnail" href="#!/{{title}}"><img src="{{thumbnailSmallUrl}}" /></a>
+			<a class="thumbnail" href="#!/{{this.attributes.id}}"><img src="{{this.attributes.thumbnailSmallUrl}}" /></a>
 			{{/each}}
 		</div>
 	</script>
