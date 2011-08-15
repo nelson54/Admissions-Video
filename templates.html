@@ -5,6 +5,12 @@
 				  {{#if videoMp4Url}}<source src="{{videoMp4Url}}"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>{{/if}}
 				  {{#if videoWebMUrl}}<source src="{{videoWebMUrl}}" type='video/webm; codecs="vp8, vorbis"'>{{/if}}
 				  {{#if videoOgvUrl}}<source src="{{videoOgvUrl}}"  type='video/ogg; codecs="theora, vorbis"'>{{/if}}
+					<object width="720" height="340" type="application/x-shockwave-flash" data="build/flashmediaelement.swf">
+				        <param name="movie" value="build/flashmediaelement.swf" />
+				        <param name="flashvars" value="controls=true&poster=myvideo.jpg&file={{title}}.mp4" />
+				        <!-- Image as a last resort -->
+				        <img src="{{title}}.jpg" width="720" height="340" title="No video playback capabilities" />
+				    </object>
 				</video>
 				<div id="description">
 					<h1>{{title}}</h1>
