@@ -176,8 +176,8 @@ Navigation = function ( params, templateFactory ){
 
 AppRouter = Backbone.Router.extend({
     routes: {
-        "!/:page": "form",
-        "!/:page/:section": "form",
+        "!/video/:page": "form",
+        "!/video/:page/:time": "form",
 		"*actions": "default"
     },
     form: function( page ){
