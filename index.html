@@ -59,9 +59,9 @@
             </a>
             <h1><a href="http://www.ferris.edu/">Admissions Officers</a></h1>
         </div>
-<div class="nav suckertreemenu">
-	
-</div>
+		<div class="nav suckertreemenu">
+			
+		</div>
 	</div>
     <div id="content_area">
         <div id="no-menu-content" > 
@@ -99,3 +99,104 @@
     }());
 </script>
 </html>
+
+<script type="text/javascript" src="mustache.js">//</script>
+<script type="text/javascript" src="underscore.js">//</script>
+<script type="text/javascript" src="backbone.js">//</script>
+
+<script type="text/javascript">
+
+Template = function ( source ) {
+	this.source = source;
+	this.template = Handlebars.compile(source);
+	
+	this.render = function (context) {
+	    return ( this.template(context) );
+	}
+};
+
+TemplateFactory = function(TemplateConstructor, url, callback){
+	this.getTemplate = function(type){
+		return (this.templates[type]);
+	}
+	
+	var loadTemplates = function(url, callback, self) {
+	    $(document.body).append('<IFRAME id="templates" />');
+	    $('iframe#templates').attr('src', url);
+	
+	    $('iframe#templates').load(function() 
+	    {
+	        callback(this, self);
+	    });
+	}
+	
+	loadTemplates(url, function(iframe, factory){
+		var templates = new Object();
+		$(iframe).contents().find('script[type="text/x-handlebars-template"]').each(function(index){
+			var datatype = $(this).attr('title');
+			var html = $(this).html();
+			templates[datatype] = new TemplateConstructor(html);
+		})
+		factory.templates = templates;
+		callback();
+		return (factory);
+	}, this)
+};
+
+Navigation = function ( params, templateFactory ){
+	this.render = function (){
+		this.getTemplate();
+		$("#no-menu-content").empty();
+		$("#no-menu-content").append(this.currentPage.render());
+		$("#no-menu-content").prepend( this.template.render(this) );
+	}
+	
+	this.addPage = function ( params , templateFactory ){
+		this.pages[ params.name ] = new formField.Form(params, templateFactory);
+		this.order.push( this.pages[ params.name ] );
+	}
+	
+	this.setPage = function ( page ){
+		this.currentPage = this.pages[ page ];
+		this.render();
+	}
+	
+	this.getTemplate = function(){
+		this.template = templateFactory.getTemplate(this.type)
+	}
+	
+	this.pages = new Object();
+	this.order = new Array();
+	this.type = "navigation";
+	
+	this.templateFactory = templateFactory;
+	
+	for( page in params.pages ){
+		this.addPage(params.pages[page], templateFactory);
+	};
+};
+
+AppRouter = Backbone.Router.extend({
+    routes: {
+        "!/:page": "form",
+        "!/:page/:section": "form",
+		"*actions": "default"
+    },
+    form: function( page ){
+        navigation.setPage( page );
+    },
+    "default": function(){
+    	router.navigate( "#!/"+navigation.order[0].name, true );
+    }
+});
+
+initialize = function(){
+	navigation = new Navigation(formValues, templateFactory);
+	router = new AppRouter;
+	Backbone.history.start();
+}
+
+
+templateFactory = new TemplateFactory(Template, 'templates.html', initialize);
+
+</script>
