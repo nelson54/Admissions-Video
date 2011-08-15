@@ -14,7 +14,7 @@
       
 
 <link type="text/css" rel="stylesheet" media="screen" href="http://www.ferris.edu/admissions/css/current/style.css" />
-
+<link type="text/css" rel="stylesheet" href="css/mediaelementplayer.css" /></code>
 
 <script type="text/javascript" src="http://www.ferris.edu/admissions/js/jquery.js">//</script>
 <script type="text/javascript" src="http://www.ferris.edu/admissions/js/jquery-ui.js">//</script>
@@ -90,6 +90,7 @@
 <script type="text/javascript" src="mustache.js">//</script>
 <script type="text/javascript" src="underscore.js">//</script>
 <script type="text/javascript" src="backbone.js">//</script>
+<script type="text/javascript" src="js/mediaelement-and-player.min.js">//</script>
 
 <script type="text/javascript" src="video.js">//</script>
 
@@ -190,6 +191,18 @@ Navigation = function ( params, templateFactory ){
 	        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
 	        document.getElementById('fb-root').appendChild(e);
 	    }());
+	    $('video').mediaelementplayer({
+		    defaultVideoWidth: 720,
+		    defaultVideoHeight: 340,
+		    videoWidth: -1,
+		    videoHeight: -1,
+		    audioWidth: 400,
+		    audioHeight: 30,
+		    startVolume: 0.8,
+		    loop: false,
+		    enableAutosize: true,
+		    features: ['playpause','progress','current','duration','tracks','volume','fullscreen'] 
+		});
 	}
 	
 	this.addPage = function ( params , templateFactory ){
@@ -242,3 +255,4 @@ initialize = function(){
 templateFactory = new TemplateFactory(Template, 'templates.html', initialize);
 
 </script>
+
