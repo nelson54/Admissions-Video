@@ -174,7 +174,7 @@ Navigation = function ( params, templateFactory ){
 	};
 };
 
-/*AppRouter = Backbone.Router.extend({
+AppRouter = Backbone.Router.extend({
     routes: {
         "!/:page": "form",
         "!/:page/:section": "form",
@@ -186,7 +186,7 @@ Navigation = function ( params, templateFactory ){
     "default": function(){
     	router.navigate( "#!/"+navigation.order[0].name, true );
     }
-});*/
+});
 
 initialize = function(){
 	navigation = new Navigation(videos, templateFactory);
