@@ -104,6 +104,8 @@
 <script type="text/javascript" src="underscore.js">//</script>
 <script type="text/javascript" src="backbone.js">//</script>
 
+<script type="text/javascript" src="videos.js">//</script>
+
 <script type="text/javascript">
 
 videos = { pages: 
@@ -165,7 +167,7 @@ Navigation = function ( params, templateFactory ){
 	}
 	
 	this.addPage = function ( params , templateFactory ){
-		this.pages[ params.name ] = new formField.Form(params, templateFactory);
+		this.pages[ params.name ] = new Video(params, templateFactory);
 		this.order.push( this.pages[ params.name ] );
 	}
 	
