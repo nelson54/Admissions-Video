@@ -1,6 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<!DOCTYPE html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
@@ -15,6 +14,18 @@
 
 <link type="text/css" rel="stylesheet" media="screen" href="http://www.ferris.edu/admissions/css/current/style.css" />
 <link type="text/css" rel="stylesheet" href="css/mediaelementplayer.css" /></code>
+
+<!--[if IE]>
+<script type="text/javascript">
+(function(){
+var html5elmeents = "address|article|aside|audio|canvas|command|datalist|details|dialog|figure|figcaption|footer|header|hgroup|keygen|mark|meter|menu|nav|progress|ruby|section|time|video".split('|');
+for(var i = 0; i < html5elmeents.length; i++){
+document.createElement(html5elmeents[i]);
+}
+}
+)();
+</script>
+<![endif]-->
 
 <script type="text/javascript" src="http://www.ferris.edu/admissions/js/jquery.js">//</script>
 <script type="text/javascript" src="http://www.ferris.edu/admissions/js/jquery-ui.js">//</script>
@@ -141,38 +152,29 @@ Template = function ( source ) {
 };
 
 TemplateFactory = function(TemplateConstructor, url, callback){
-	this.getTemplate = function(type){
-		return (this.templates[type]);
-	}
-	
-	var loadTemplates = function(url, callback, self) {
-	    $(document.body).append('<IFRAME id="templates" />');
-	    $('iframe#templates').attr('src', url);
-	
-	    $('iframe#templates').load(function() 
-	    {
-	        callback(this, self);
-	    });
-	}
-	
-	loadTemplates(url, function(iframe, factory){
-		var templates = new Object();
-		$(iframe).contents().find('script[type="text/x-handlebars-template"]').each(function(index){
-			var datatype = $(this).attr('title');
-			var html = $(this).html();
-			templates[datatype] = new TemplateConstructor(html);
-		})
-		factory.templates = templates;
-		callback();
-		return (factory);
-	}, this)
+    this.getTemplate = function(type){
+            return (this.templates[type]);
+    }
+
+    var templates = this.templates = {};
+
+    $.get( url, function ( data ) {
+        $( data ).filter('script[type="text/x-handlebars-template"]').each( function(){
+            var $this = $( this ),
+                datatype = $this.attr('title'),
+                html = $this.html();
+
+            templates[ datatype ] = new TemplateConstructor( html );
+        });
+        callback();
+    });
 };
 
 Navigation = function ( params, templateFactory ){
 	this.render = function (){
 		this.getTemplate();
-		$("#no-menu-content").empty();
-		$("#no-menu-content").append(this.currentPage.render());
+		//$("#no-menu-content").empty();
+		$("#no-menu-content").append(this.currentPage.attributes.fieldHtml);
 		$("#no-menu-content").append( this.template.render(this) );
 		this.postRenderSetup();
 	}
@@ -252,8 +254,7 @@ initialize = function(){
 	Backbone.history.start();
 }
 
-
-templateFactory = new TemplateFactory(Template, 'templates.html', initialize);
+templateFactory = new TemplateFactory(Template, 'templates.html?6533465', initialize);
 
 </script>
 

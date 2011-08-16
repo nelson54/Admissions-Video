@@ -1,26 +1,23 @@
 <html>
 	<script id="html5-video-template" type="text/x-handlebars-template" title="videoTemplate">
-			<div id="video">
-				<video width="720" height="340" style="background-color:black;" controls>
-				  {{#if videoMp4Url}}<source src="{{videoMp4Url}}"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>{{/if}}
-				  {{#if videoWebMUrl}}<source src="{{videoWebMUrl}}" type='video/webm; codecs="vp8, vorbis"'>{{/if}}
-				  {{#if videoOgvUrl}}<source src="{{videoOgvUrl}}"  type='video/ogg; codecs="theora, vorbis"'>{{/if}}
-					<object width="720" height="340" type="application/x-shockwave-flash" data="build/flashmediaelement.swf">
-				        <param name="movie" value="build/flashmediaelement.swf" />
-				        <param name="flashvars" value="controls=true&poster=myvideo.jpg&file={{title}}.mp4" />
-				        <!-- Image as a last resort -->
-				        <img src="{{title}}.jpg" width="720" height="340" title="No video playback capabilities" />
-				    </object>
-				</video>
-				<div id="description">
-					<h1>{{title}}</h1>
-					<p>{{description}}</p>
-				</div>
-				<div id="comments">
-					<fb:comments width="720px" css="http://www.ferris.edu/admissions/video/fbcomments.css" xid={{id}} title="Ferris Admissions Videos - {{title}}"></fb:comments>
-				</div>
+		<div id="video">
+			<video width="720" height="340" style="background-color:black;" controls>
+			  {{#if videoMp4Url}}<source src="{{videoMp4Url}}" {{{videoMp4Details}}} >{{/if}}
+			  {{#if videoWebMUrl}}<source src="{{videoWebMUrl}}" {{{videoOgvDetails}}}>{{/if}}
+			  {{#if videoOgvUrl}}<source src="{{videoOgvUrl}}" {{{videoWebMDetails}}} >{{/if}}
+				<object width="720" height="340" type="application/x-shockwave-flash" data="build/flashmediaelement.swf">
+			        <param name="movie" value="build/flashmediaelement.swf" />
+			        <param name="flashvars" value="controls=true&poster=myvideo.jpg&file={{videoMp4Url}}" />
+			        <img src="{{thumbnailSmallUrl}}" width="720" height="340" title="No video playback capabilities" />
+			    </object>
+			</video>
+			<div id="description">
+				<h1>{{title}}</h1>
+				<p>{{description}}</p>
 			</div>
-			
+			<div id="comments">
+				<fb:comments width="720px" css="http://www.ferris.edu/admissions/video/fbcomments.css" xid={{id}} title="Ferris Admissions Videos - {{title}}"></fb:comments>
+			</div>
 		</div>
 	</script>
 	<script id="page-template" type="text/x-handlebars-template" title="navigation">
