@@ -1,13 +1,13 @@
 <html>
 	<script id="html5-video-template" type="text/x-handlebars-template" title="videoTemplate">
 		<div id="video">
-			<video width="720" height="340" style="background-color:black;" controls>
+			<video width="720" height="340" style="background-color:black;" >
 			  {{#if videoMp4Url}}<source src="{{videoMp4Url}}" {{{videoMp4Details}}} >{{/if}}
 			  {{#if videoWebMUrl}}<source src="{{videoWebMUrl}}" {{{videoOgvDetails}}}>{{/if}}
 			  {{#if videoOgvUrl}}<source src="{{videoOgvUrl}}" {{{videoWebMDetails}}} >{{/if}}
 				<object width="720" height="340" type="application/x-shockwave-flash" data="build/flashmediaelement.swf">
 			        <param name="movie" value="build/flashmediaelement.swf" />
-			        <param name="flashvars" value="controls=true&poster=myvideo.jpg&file={{videoMp4Url}}" />
+			        <param name="flashvars" value="controls=true&poster={{thumbnailSmallUrl}}&file={{videoMp4Url}}" />
 			        <img src="{{thumbnailSmallUrl}}" width="720" height="340" title="No video playback capabilities" />
 			    </object>
 			</video>

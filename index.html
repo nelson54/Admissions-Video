@@ -173,7 +173,7 @@ TemplateFactory = function(TemplateConstructor, url, callback){
 Navigation = function ( params, templateFactory ){
 	this.render = function (){
 		this.getTemplate();
-		//$("#no-menu-content").empty();
+		$("#no-menu-content").empty();
 		$("#no-menu-content").append(this.currentPage.attributes.fieldHtml);
 		$("#no-menu-content").append( this.template.render(this) );
 		this.postRenderSetup();
@@ -193,7 +193,7 @@ Navigation = function ( params, templateFactory ){
 	        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
 	        document.getElementById('fb-root').appendChild(e);
 	    }());
-	    $('video').mediaelementplayer({
+	    $('video#video').mediaelementplayer({
 		    defaultVideoWidth: 720,
 		    defaultVideoHeight: 340,
 		    videoWidth: -1,
